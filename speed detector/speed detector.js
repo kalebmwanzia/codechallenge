@@ -1,17 +1,24 @@
-// Function to calculate demerit points
-function calculateDemeritPoints(speed, speedLimit) {
+
+function calculateDemeritPoints(speed) {
+    const speedLimit = 70;
     const kmPerDemeritPoint = 5;
   
     if (speed <= speedLimit) {
-      return 0;
-    } else {
-      const points = Math.floor((speed - speedLimit) / kmPerDemeritPoint);
-      return points;
+      return 'Ok';
     }
+  
+    const excessSpeed = speed - speedLimit;
+    const demeritPoints = Math.floor(excessSpeed / kmPerDemeritPoint);
+  
+    if (demeritPoints >= 12) {
+      return 'License suspended';
+    }
+  
+    return `Points: ${demeritPoints}`;
   }
   
-  // Export the function to be used in the main program
-  module.exports = {
-    calculateDemeritPoints,
-  };
+  module.exports = calculateDemeritPoints;
+
+
+
   
